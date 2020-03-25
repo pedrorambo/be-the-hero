@@ -1,44 +1,22 @@
-const express = require('express')
+const express = require('express');
+const routes = express.Router();
+const crypto = require('crypto');
+const connection = require('./database/connection');
 
-const routes = express.Router()
+routes.post('/ongs', async (request, response) => {
+    const {name, email, whatsapp, city, uf} = request.body;
+    const id = crypto.randomBytes(4).toString('HEX');
 
-const database = {
-    users: [
-        {
-            id: 1,
-            name: 'Pedro Rambo',
-            idade: 20
-        },
-        {
-            id: 2,
-            name: 'Outra Pessoa',
-            idade: 24
-        }
-    ]
-}
+    await connection('ongs').insert({
+        name,
+        email,
+        whatsapp,
+        city,
+        uf,
+        id
+    })
 
-routes.get('/users', (request, response) =>{
-    const query = request.query
-    if(Object.keys(query).length){
-        return response.json({query: query, users: database.users[0]})
-    }
-    return response.json(database.users)
+    return response.json({id});
 })
 
-routes.get('/users/:id', (request, response) =>{
-    const id = request.params.id
-    const found = database.users.find(user => user.id == id)
-    return response.json(found)
-})
-
-routes.post('/users', (request, response) => {
-    const data = request.body
-    return response.json({message: 'User added', user: data})
-})
-
-routes.delete('/users/:id', (request, response) => {
-    const id = request.params.id
-    return response.json({message: 'User removed', id: id})
-})
-
-module.exports = routes
+module.exports = routes;
