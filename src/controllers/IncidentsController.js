@@ -10,7 +10,15 @@ async function index(request, response){
     const incidents = await connection('incidents')
         .limit(5)
         .offset((page - 1) * 5)
-        .select('*');
+        .join('ongs', 'ongs.id', '=', 'incidents.ong_id')
+        .select([
+            'incidents.*',
+            'ongs.name',
+            'ongs.whatsapp',
+            'ongs.email',
+            'ongs.city',
+            'ongs.uf'
+        ]);
     return response.json(incidents);
 }
 
