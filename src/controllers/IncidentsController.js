@@ -1,15 +1,6 @@
 const connection = require('../database/connection');
 
 async function index(request, response){
-    const {authorization} = request.headers;
-
-    if(authorization){
-        const incidents = await connection('incidents')
-            .where('ong_id', authorization)
-            .select('*');
-        return response.json(incidents);
-    }
-
     const incidents = await connection('incidents').select('*');
     return response.json(incidents);
 }
