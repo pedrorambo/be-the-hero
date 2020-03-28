@@ -1,0 +1,14 @@
+.btn-hero{
+    background-color: #e02041;
+    color: white;
+    transition: filter 0.2s;
+}
+
+.btn-hero:hover{
+    filter: brightness(90%);
+    color: white;
+}
+
+body{
+    background: #ecf0f1;
+}

@@ -1,0 +1,8 @@
+#sign-in span{
+    font-weight: bold;
+    color: #212529;
+}
+
+#sign-in:hover {
+    cursor: pointer;
+}
