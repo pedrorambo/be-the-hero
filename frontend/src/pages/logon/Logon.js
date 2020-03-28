@@ -28,6 +28,7 @@ export default class Logon extends React.Component{
                             <span className={'ml-2'}>Não tenho cadastro</span>
                         </Link>
                     </div>
+                    <div className="col-lg-1"></div>
 
                     {/*HEROES IMAGE*/}
                     <div className="col-lg-6 my-auto">
