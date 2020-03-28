@@ -1,3 +1,4 @@
 backend/node_modules/
 backend/src/database/db.sqlite3
+frontend/node_modules/
 .idea/
