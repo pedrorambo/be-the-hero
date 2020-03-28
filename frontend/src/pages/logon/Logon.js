@@ -3,7 +3,8 @@ import logo from '../../assets/logo.svg';
 import heroes from '../../assets/heroes.png';
 import {FiLogIn} from 'react-icons/fi';
 import './styles.css';
-import {Link} from 'react-router-dom';
+import {Link, withRouter} from 'react-router-dom';
+import api from '../../services/api';
 
 export default class Logon extends React.Component{
 
@@ -15,12 +16,27 @@ export default class Logon extends React.Component{
         };
 
         this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     handleChange(e){
         const key = e.target.name;
         const value = e.target.value;
         this.setState({[key]: value});
+    }
+
+    async handleSubmit(e){
+        e.preventDefault();
+        const {id} = this.state;
+
+        try{
+            const response = await api.post('session', {id});
+            localStorage.setItem('ongId', id);
+            localStorage.setItem('ongName', response.data.name);
+            this.props.history.push('profile');
+        }catch (e) {
+            alert("Não foi possível fazer login");
+        }
     }
 
     render() {
@@ -34,7 +50,7 @@ export default class Logon extends React.Component{
                         <img src={logo} alt="Be the hero logo"/>
                         <h2 className={'mt-5 mb-3'}>Faça seu logon</h2>
 
-                        <form id={'logon-form'}>
+                        <form id={'logon-form'} onSubmit={this.handleSubmit}>
                             <div className="form-group">
                                 <input
                                     name={'id'}
