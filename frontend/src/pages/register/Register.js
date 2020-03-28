@@ -1,7 +1,8 @@
 import React from 'react';
 import logo from "../../assets/logo.svg";
-import {Link} from "react-router-dom";
+import {Link, withRouter} from "react-router-dom";
 import {FiChevronsLeft} from 'react-icons/fi';
+import api from '../../services/api';
 
 export default class Register extends React.Component{
 
@@ -17,12 +18,27 @@ export default class Register extends React.Component{
         };
 
         this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     handleChange(e){
         const key = e.target.name;
         const value = e.target.value;
         this.setState({[key]: value});
+    }
+
+    // Submit the register form
+    async handleSubmit(e){
+        e.preventDefault()
+
+        try{
+            const response = await api.post('ongs', this.state);
+            alert("Cadastrado com sucesso, sua ID é " + response.data.id);
+            this.props.history.push('/');
+        }catch (e) {
+            console.log(e);
+            alert("Erro ao cadastrar, tente novamente");
+        }
     }
 
     render() {
@@ -50,7 +66,7 @@ export default class Register extends React.Component{
 
                         {/*SIGN IN FORM*/}
                         <div className="col-lg-4 my-auto">
-                            <form id={'logon-form'}>
+                            <form onSubmit={this.handleSubmit} id={'logon-form'}>
 
                                 <div className="form-group mb-1">
                                     <input name={'name'} value={name} onChange={this.handleChange} className={'form-control'} placeholder={'Nome da ONG'}/>
