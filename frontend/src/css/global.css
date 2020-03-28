@@ -9,6 +9,18 @@
     color: white;
 }
 
+.btn-outline-hero{
+    background-color: transparent;
+    color: #e02041;
+    border: 1px solid #e02041;
+    transition: background-color 0.2s;
+}
+
+.btn-outline-hero:hover{
+    color: #e02041;
+    background-color: rgba(224, 32, 65, 0.15);
+}
+
 body{
     background: #ecf0f1;
 }
