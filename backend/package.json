@@ -6,7 +6,7 @@
   "scripts": {
     "start": "nodemon src/index.js"
   },
-  "keywords": [],
+  "keywords": ["api", "be-the-hero"],
   "author": "Pedro Rambo <henrique.pr92@gmail.com>",
   "license": "ISC",
   "devDependencies": {
