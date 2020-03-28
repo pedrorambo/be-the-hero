@@ -6,6 +6,23 @@ import './styles.css';
 import {Link} from 'react-router-dom';
 
 export default class Logon extends React.Component{
+
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            id: '',
+        };
+
+        this.handleChange = this.handleChange.bind(this);
+    }
+
+    handleChange(e){
+        const key = e.target.name;
+        const value = e.target.value;
+        this.setState({[key]: value});
+    }
+
     render() {
         return (
             <div className={'container'}>
@@ -19,7 +36,13 @@ export default class Logon extends React.Component{
 
                         <form id={'logon-form'}>
                             <div className="form-group">
-                                <input className={'form-control'} placeholder={'Sua id'}/>
+                                <input
+                                    name={'id'}
+                                    value={this.state.id}
+                                    onChange={this.handleChange}
+                                    className={'form-control'}
+                                    placeholder={'Sua id'}
+                                />
                                 <input type="submit" className={'btn btn-hero btn-block mt-3'}/>
                             </div>
                         </form>

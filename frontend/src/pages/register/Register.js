@@ -4,13 +4,36 @@ import {Link} from "react-router-dom";
 import {FiChevronsLeft} from 'react-icons/fi';
 
 export default class Register extends React.Component{
+
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            name: '',
+            email: '',
+            whatsapp: '',
+            city: '',
+            uf: '',
+        };
+
+        this.handleChange = this.handleChange.bind(this);
+    }
+
+    handleChange(e){
+        const key = e.target.name;
+        const value = e.target.value;
+        this.setState({[key]: value});
+    }
+
     render() {
+        const {name, email, whatsapp, city, uf} = this.state;
+
         return (
             <div className={'jumbotron vertical-center'}>
                 <div className={'container'}>
                     <div className="row">
 
-                        {/*LOGON FORM*/}
+                        {/*DESCRIPTIONS*/}
                         <div className="col-lg-2"></div>
 
                         <div className="col-lg-4 my-auto">
@@ -25,28 +48,28 @@ export default class Register extends React.Component{
                             </Link>
                         </div>
 
-                        {/*HEROES IMAGE*/}
+                        {/*SIGN IN FORM*/}
                         <div className="col-lg-4 my-auto">
                             <form id={'logon-form'}>
 
                                 <div className="form-group mb-1">
-                                    <input className={'form-control'} placeholder={'Nome da ONG'}/>
+                                    <input name={'name'} value={name} onChange={this.handleChange} className={'form-control'} placeholder={'Nome da ONG'}/>
                                 </div>
 
                                 <div className="form-group mb-1">
-                                    <input type='email' className={'form-control'} placeholder={'E-mail'}/>
+                                    <input type='email' name={'email'} value={email} onChange={this.handleChange} className={'form-control'} placeholder={'E-mail'}/>
                                 </div>
 
                                 <div className="form-group mb-1">
-                                    <input className={'form-control'} placeholder={'Whatsapp'}/>
+                                    <input name={'whatsapp'} value={whatsapp} onChange={this.handleChange} className={'form-control'} placeholder={'Whatsapp'}/>
                                 </div>
 
                                 <div className="form-row">
                                     <div className="form-group col-lg-9">
-                                        <input className={'form-control'} placeholder={'Cidade'}/>
+                                        <input name={'city'} value={city} onChange={this.handleChange} className={'form-control'} placeholder={'Cidade'}/>
                                     </div>
                                     <div className="form-group col-lg-3">
-                                        <input className={'form-control'} placeholder={'UF'}/>
+                                        <input name={'uf'} value={uf} onChange={this.handleChange} maxLength={2} className={'form-control'} placeholder={'UF'}/>
                                     </div>
                                 </div>
 

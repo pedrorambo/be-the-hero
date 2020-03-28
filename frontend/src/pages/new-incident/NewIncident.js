@@ -4,7 +4,28 @@ import {Link} from "react-router-dom";
 import {FiChevronsLeft} from 'react-icons/fi';
 
 export default class NewIncident extends React.Component{
+
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            title: '',
+            description: '',
+            value: '',
+        };
+
+        this.handleChange = this.handleChange.bind(this);
+    }
+
+    handleChange(e){
+        const key = e.target.name;
+        const value = e.target.value;
+        this.setState({[key]: value });
+    }
+
     render() {
+        const {title, description, value} = this.state;
+
         return (
             <div className={'jumbotron vertical-center'}>
                 <div className={'container'}>
@@ -25,19 +46,19 @@ export default class NewIncident extends React.Component{
                             </Link>
                         </div>
 
-                        {/*CASE FORM*/}
+                        {/*INCIDENT FORM*/}
                         <div className="col-lg-4 my-auto">
                             <form>
                                 <div className="form-group mb-1">
-                                    <input className={'form-control'} placeholder={'Título do caso'}/>
+                                    <input name={'title'} value={title} onChange={this.handleChange} className={'form-control'} placeholder={'Título do caso'}/>
                                 </div>
 
                                 <div className="form-group mb-1">
-                                    <textarea rows={5} className={'form-control'} placeholder={'Descrição'}/>
+                                    <textarea name={'description'} value={description} onChange={this.handleChange} rows={5} className={'form-control'} placeholder={'Descrição'}/>
                                 </div>
 
                                 <div className="form-group mb-2">
-                                    <input className={'form-control'} placeholder={'Valor em reais'}/>
+                                    <input name={'value'} value={value} onChange={this.handleChange} className={'form-control'} placeholder={'Valor em reais'}/>
                                 </div>
 
                                 <div className="form-row">
