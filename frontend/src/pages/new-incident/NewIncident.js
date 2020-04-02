@@ -61,9 +61,9 @@ export default class NewIncident extends React.Component {
 
                             <p>Descreva o caso detalhadamente para encontrar um herói disponível.</p>
 
-                            <Link to={'/profile'} id={'sign-in'}>
-                                <FiChevronsLeft color={'#e02041'}/>
-                                <span className={'ml-2'}>Voltar para home</span>
+                            <Link to={'/profile'} className={'link'}>
+                                <FiChevronsLeft/>
+                                <span>Voltar para home</span>
                             </Link>
                         </div>
 
