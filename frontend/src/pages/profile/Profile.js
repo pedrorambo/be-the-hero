@@ -30,6 +30,7 @@ export default class Profile extends React.Component{
         });
     }
 
+
     rednerIncidents(){
         if(this.state.incidents.length > 0){
             return this.state.incidents.map(incident =>{
@@ -52,7 +53,7 @@ export default class Profile extends React.Component{
                                         <span>{parsedValue}</span>
                                     </div>
                                     <div className="col-lg-1">
-                                        <button className={'btn float-right'}><FiTrash2/></button>
+                                        <button onClick={()=>this.handleDelete(incident.id)} className={'btn float-right'}><FiTrash2/></button>
                                     </div>
                                 </div>
                             </div>
@@ -60,6 +61,22 @@ export default class Profile extends React.Component{
                     </div>
                 );
             })
+        }
+    }
+
+    async handleDelete(id){
+        try {
+            await api.delete(`incidents/${id}`, {
+                headers: {
+                    Authorization: localStorage.getItem('ongId')
+                }
+            });
+
+            this.setState({
+                incidents: this.state.incidents.filter(incident => incident.id !== id)
+            });
+        }catch (e) {
+            alert("Erro ao deletar caso");
         }
     }
 
