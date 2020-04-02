@@ -12,6 +12,7 @@ export default class Profile extends React.Component{
         this.state = {
             incidents: [],
         }
+        this.logout = this.logout.bind(this);
     }
 
     componentDidMount() {
@@ -30,6 +31,11 @@ export default class Profile extends React.Component{
         });
     }
 
+
+    logout(){
+        localStorage.clear();
+        this.props.history.push('/');
+    }
 
     rednerIncidents(){
         if(this.state.incidents.length > 0){
@@ -86,11 +92,11 @@ export default class Profile extends React.Component{
                 <div className="container mt-3">
                     <div className="row">
                         <div className="col-lg-12 d-flex">
-                            <img src={logo} alt="Be the hero logo" width={160}/>
+                            <Link to={'/'}><img src={logo} alt="Be the hero logo" width={160}/></Link>
                             <span className={'ml-4 font-weight-bold my-auto'}>Bem vinda, {localStorage.getItem('ongName')}</span>
                             <div className={'d-flex ml-auto my-auto'}>
                                 <Link to='incidents/new' className={'btn btn-hero mr-2'}>Cadastrar novo caso</Link>
-                                <button className={'btn btn-outline-hero'}><FiPower/></button>
+                                <button className={'btn btn-outline-hero'} onClick={this.logout}><FiPower/></button>
                             </div>
                         </div>
                     </div>
