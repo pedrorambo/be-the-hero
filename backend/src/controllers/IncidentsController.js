@@ -1,6 +1,6 @@
 const connection = require('../database/connection');
 
-async function index(request, response){
+async function index(request, response) {
     const {page = 1} = request.query;
 
     const count = await connection('incidents').count('*').first();
@@ -22,7 +22,28 @@ async function index(request, response){
     return response.json(incidents);
 }
 
-async function create(request, response){
+async function select(request, response) {
+    const {id} = request.params;
+
+    const incident = await connection('incidents')
+        .where('incidents.id', id)
+        .join('ongs', 'ongs.id', 'incidents.ong_id')
+        .select(
+            'incidents.title',
+            'incidents.description',
+            'incidents.value',
+            'ongs.name',
+            'ongs.city',
+            'ongs.uf',
+            'ongs.whatsapp',
+            'ongs.email'
+        )
+        .first();
+
+    return response.json(incident);
+}
+
+async function create(request, response) {
     const {title, description, value} = request.body;
     const {authorization} = request.headers;
 
@@ -36,7 +57,7 @@ async function create(request, response){
     return response.json({id});
 }
 
-async function remove(request, response){
+async function remove(request, response) {
     const {id} = request.params;
     const {authorization} = request.headers;
 
@@ -45,7 +66,7 @@ async function remove(request, response){
         .select('ong_id')
         .first();
 
-    if(ong_id != authorization){
+    if (ong_id != authorization) {
         return response.status(401).json({error: "Operation not permitted"})
     }
 
@@ -56,4 +77,4 @@ async function remove(request, response){
     return response.status(204).send();
 }
 
-module.exports = {index, create, remove};
+module.exports = {index, create, remove, select};
