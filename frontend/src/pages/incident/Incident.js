@@ -49,7 +49,7 @@ export default class Incident extends React.Component{
                     <div className="row">
                         <div className="col-lg-12 d-flex">
                             <Link to={'/'}><img src={logo} alt="Be the hero logo" width={160}/></Link>
-                            <span className={'ml-4 font-weight-bold my-auto'}>Clique em um caso para abri-lo.</span>
+                            <span className={'ml-4 font-weight-bold my-auto'}>Ajude a ONG {incident.name}</span>
                             <div className={'d-flex ml-auto my-auto'}>
                                 <Link to={'/incidents'} className={'btn btn-hero mr-2'}><FiChevronsLeft/> Voltar aos casos</Link>
                                 <Link to={'/'} className={'btn btn-outline-hero'}><FiPower/> Sair</Link>
@@ -75,10 +75,12 @@ export default class Incident extends React.Component{
                                     </div>
                                 </div>
                             </div>
+
                             <Link to={'/incidents'} className={'link'}>
-                                <FiChevronsLeft color={'#e02041'}/>
+                                <FiChevronsLeft/>
                                 <span>Voltar aos casos</span>
                             </Link>
+
                         </div>
 
                         <div key={incident.id} className="col-lg-4">

@@ -72,7 +72,7 @@ export default class Profile extends React.Component{
                     <div className="row">
                         <div className="col-lg-12 d-flex">
                             <Link to={'/'}><img src={logo} alt="Be the hero logo" width={160}/></Link>
-                            <span className={'ml-4 font-weight-bold my-auto'}>Clique em um caso para abri-lo.</span>
+                            <span className={'ml-4 font-weight-bold my-auto'}>Clique em um caso para ver mais detalhes.</span>
                             <div className={'d-flex ml-auto my-auto'}>
                                 <Link to={'/'} className={'btn btn-outline-hero'}><FiPower/> Sair</Link>
                             </div>
