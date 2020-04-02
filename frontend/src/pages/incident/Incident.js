@@ -9,24 +9,29 @@ export default class Incident extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
-            incident: [],
+            incident: {},
         }
     }
 
     componentDidMount() {
-        this.getIncidents();
+        this.getIncident();
     }
 
-    async getIncidents(){
-        const response = await api.get('incidents',{
-            headers: {
-                Authorization: localStorage.getItem('ongId'),
-            }
-        });
+    async getIncident(){
+        try{
+            const response = await api.get(`incidents/${this.props.match.params.id}`,{
+                headers: {
+                    Authorization: localStorage.getItem('ongId'),
+                }
+            });
 
-        this.setState({
-            incident: response.data
-        });
+            this.setState({
+                incident: response.data
+            });
+        }catch (e) {
+            console.log(e);
+            alert("Erro ao buscar informações da ONG");
+        }
     }
 
     render() {
@@ -53,8 +58,8 @@ export default class Incident extends React.Component{
 
                 <div className="container mt-5">
                     <div className="row">
-                        <div key={incident.id} className="col-lg-6">
-                            <div className="card mb-4 incident-click" onClick={() => this.openIncident(1)}>
+                        <div key={incident.id} className="col-lg-8">
+                            <div className="card mb-4">
                                 <div className="card-body">
                                     <div className="row">
                                         <div className="col-lg-11">
@@ -64,6 +69,23 @@ export default class Incident extends React.Component{
                                             <p className="card-text">{incident.description}</p>
                                             <h6>Valor: </h6>
                                             <span>{parsedValue}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div key={incident.id} className="col-lg-4">
+                            <div className="card mb-4">
+                                <div className="card-body">
+                                    <div className="row">
+                                        <div className="col-lg-11">
+                                            <h5 className="card-title mb-1">
+                                                <span className={'text-center'}>{incident.name}</span>
+                                            </h5>
+                                            <p className="card-text">{incident.city}</p>
+                                            <button className={'btn btn-hero'}>E-mail</button>
+                                            <button className={'btn btn-hero'}>E-mail</button>
                                         </div>
                                     </div>
                                 </div>
