@@ -1,0 +1,8 @@
+.incident-click{
+    transition: box-shadow 0.1s;
+}
+
+.incident-click:hover{
+    box-shadow: 0 0 20px rgba(152, 19, 44, 0.35);
+    cursor: pointer;
+}

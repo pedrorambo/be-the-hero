@@ -1,9 +1,9 @@
 import React from 'react';
 import logo from '../../assets/logo.svg';
-import {FiPower, FiMail} from 'react-icons/fi';
-import {FaWhatsapp} from 'react-icons/fa';
+import {FiPower} from 'react-icons/fi';
 import {Link} from 'react-router-dom';
 import api from '../../services/api';
+import './styles.css';
 
 export default class Profile extends React.Component{
 
@@ -30,6 +30,10 @@ export default class Profile extends React.Component{
         });
     }
 
+    openIncident(id){
+        this.props.history.push(`/incident/${id}`);
+    }
+
 
     rednerIncidents(){
         if(this.state.incidents.length > 0){
@@ -41,22 +45,16 @@ export default class Profile extends React.Component{
 
                 return(
                     <div key={incident.id} className="col-lg-6">
-                        <div className="card mb-4">
+                        <div className="card mb-4 incident-click" onClick={() => this.openIncident(incident.id)}>
                             <div className="card-body">
                                 <div className="row">
                                     <div className="col-lg-11">
-                                        <h5 className="card-title mt-2 mb-1">
+                                        <h5 className="card-title mb-1">
                                             <span className={'my-auto'}>{incident.title}</span>
                                         </h5>
                                         <p className="card-text">{incident.description}</p>
                                         <h6>Valor: </h6>
                                         <span>{parsedValue}</span>
-
-                                        <h6 className={'mt-3'}>Entrar em contato: </h6>
-                                        <div>
-                                            <button className={'btn btn-hero mr-2'}><FiMail/> E-mail</button>
-                                            <button className={'btn btn-hero'}><FaWhatsapp className={'mr-1'}/>Whatsapp</button>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -73,7 +71,7 @@ export default class Profile extends React.Component{
                 <div className="container mt-3">
                     <div className="row">
                         <div className="col-lg-12 d-flex">
-                            <img src={logo} alt="Be the hero logo" width={160}/>
+                            <Link to={'/'}><img src={logo} alt="Be the hero logo" width={160}/></Link>
                             <span className={'ml-4 font-weight-bold my-auto'}>Clique em um caso para abri-lo.</span>
                             <div className={'d-flex ml-auto my-auto'}>
                                 <Link to={'/'} className={'btn btn-outline-hero'}><FiPower/> Sair</Link>
