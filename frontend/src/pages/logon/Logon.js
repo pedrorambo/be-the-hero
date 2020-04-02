@@ -1,7 +1,7 @@
 import React from 'react';
 import logo from '../../assets/logo.svg';
 import heroes from '../../assets/heroes.png';
-import {FiLogIn} from 'react-icons/fi';
+import {FiLogIn, FiChevronsLeft} from 'react-icons/fi';
 import './styles.css';
 import {Link, withRouter} from 'react-router-dom';
 import api from '../../services/api';
@@ -65,6 +65,11 @@ export default class Logon extends React.Component{
                         <Link to={'register'} id={'sign-in'}>
                             <FiLogIn color={'#e02041'}/>
                             <span className={'ml-2'}>Não tenho cadastro</span>
+                        </Link>
+                        <br/>
+                        <Link to={'/'} id={'sign-in'}>
+                            <FiChevronsLeft color={'#e02041'}/>
+                            <span className={'ml-2'}>Voltar</span>
                         </Link>
                     </div>
                     <div className="col-lg-1"></div>
