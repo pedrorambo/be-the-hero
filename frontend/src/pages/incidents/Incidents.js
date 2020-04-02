@@ -48,7 +48,7 @@ export default class Profile extends React.Component{
                         <div className="card mb-4 incident-click" onClick={() => this.openIncident(incident.id)}>
                             <div className="card-body">
                                 <div className="row">
-                                    <div className="col-lg-11">
+                                    <div className="col-lg-12">
                                         <h5 className="card-title mb-1">
                                             <span className={'my-auto'}>{incident.title}</span>
                                         </h5>
