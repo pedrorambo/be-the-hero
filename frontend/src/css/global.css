@@ -32,3 +32,18 @@ body{
     display: flex;
     align-items: center;
 }
+
+.link{
+    color: #e02041;
+}
+
+.link span{
+    color: #212529;
+    font-weight: bold;
+    margin-left: 2px;
+}
+
+.link:hover{
+    color: #e02041;
+    text-decoration: underline #e02041;
+}

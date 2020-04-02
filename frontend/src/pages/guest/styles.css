@@ -1,8 +1,0 @@
-#logon span{
-    font-weight: bold;
-    color: #212529;
-}
-
-#logon:hover {
-    cursor: pointer;
-}

@@ -58,9 +58,9 @@ export default class Register extends React.Component{
 
                             <p>Faça seu cadastro, entre na plataforma e ajude pessoas a encontrarem os casos da sua ONG</p>
 
-                            <Link to={'/logon'} id={'sign-in'}>
-                                <FiChevronsLeft color={'#e02041'}/>
-                                <span className={'ml-2'}>Já tenho cadastro</span>
+                            <Link to={'/logon'} className={'link'}>
+                                <FiChevronsLeft/>
+                                <span>Já tenho cadastro</span>
                             </Link>
                         </div>
 

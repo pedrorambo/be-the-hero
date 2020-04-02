@@ -4,7 +4,6 @@ import heroes from '../../assets/heroes.png';
 import {FiLogIn} from 'react-icons/fi';
 import {Link, withRouter} from 'react-router-dom';
 import api from '../../services/api';
-import './styles.css';
 
 export default class Guest extends React.Component{
 
@@ -53,9 +52,9 @@ export default class Guest extends React.Component{
 
                         <Link to="incidents" className={'btn btn-hero btn-block mb-3'}>Quero ajudar</Link>
 
-                        <Link to={'logon'} id={'logon'}>
-                            <FiLogIn color={'#e02041'}/>
-                            <span className={'ml-2'}>Represento uma ONG</span>
+                        <Link to={'logon'} className={'link'}>
+                            <FiLogIn/>
+                            <span>Represento uma ONG</span>
                         </Link>
                     </div>
                     <div className="col-lg-1"></div>
