@@ -2,14 +2,15 @@ const connection = require('../database/connection');
 
 async function index(request, response) {
     const {page = 1} = request.query;
+    const INCIDENTS_PER_PAGE = 5;
 
+    // Number incidents
     const count = await connection('incidents').count('*').first();
-
     response.header('X-Total-Count', count['count(*)']);
 
     const incidents = await connection('incidents')
-        .limit(5)
-        .offset((page - 1) * 5)
+        .limit(INCIDENTS_PER_PAGE)
+        .offset((page - 1) * INCIDENTS_PER_PAGE)
         .join('ongs', 'ongs.id', '=', 'incidents.ong_id')
         .select([
             'incidents.*',
