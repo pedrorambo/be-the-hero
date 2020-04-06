@@ -47,3 +47,13 @@ body{
     color: #e02041;
     text-decoration: underline #e02041;
 }
+
+.btn-trash{
+    transition: all 0.2s;
+    transition-property: border, color;
+}
+
+.btn-trash:hover{
+    color: #e02041;
+    border: 1px solid #e02041;
+}

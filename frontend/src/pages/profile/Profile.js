@@ -59,7 +59,7 @@ export default class Profile extends React.Component{
                                         <span>{parsedValue}</span>
                                     </div>
                                     <div className="col-lg-1">
-                                        <button onClick={()=>this.handleDelete(incident.id)} className={'btn float-right'}><FiTrash2/></button>
+                                        <button onClick={()=>this.handleDelete(incident.id)} className={'btn float-right btn-trash'}><FiTrash2/></button>
                                     </div>
                                 </div>
                             </div>
