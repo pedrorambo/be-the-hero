@@ -4,9 +4,10 @@ const OngsController = require('./controllers/OngsController');
 const IncidentsController = require('./controllers/IncidentsController');
 const ProfileController = require('./controllers/ProfileController');
 const SessionController = require('./controllers/SessionController');
+const OngsValidator = require('./validators/OngsValidator');
 
 routes.get('/ongs', OngsController.index);
-routes.post('/ongs', OngsController.create);
+routes.post('/ongs', OngsValidator.create, OngsController.create);
 
 routes.get('/incidents', IncidentsController.index);
 routes.get('/incidents/:id', IncidentsController.select);
