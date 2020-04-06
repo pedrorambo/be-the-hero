@@ -19,16 +19,16 @@ const create = celebrate({
         value: Joi.number().required().min(10).max(5000)
     }),
     [Segments.HEADERS]: Joi.object({
-        authorization: Joi.string().hex().length(8)
+        authorization: Joi.string().hex().length(8).required()
     }).unknown()
 });
 
 const remove = celebrate({
     [Segments.PARAMS]: Joi.object().keys({
-        id: Joi.number().integer().min(0)
+        id: Joi.number().integer().min(0).required()
     }),
     [Segments.HEADERS]: Joi.object({
-        authorization: Joi.string().hex().length(8)
+        authorization: Joi.string().hex().length(8).required()
     }).unknown()
 });
 
