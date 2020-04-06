@@ -4,15 +4,17 @@ const OngsController = require('./controllers/OngsController');
 const IncidentsController = require('./controllers/IncidentsController');
 const ProfileController = require('./controllers/ProfileController');
 const SessionController = require('./controllers/SessionController');
+
 const OngsValidator = require('./validators/OngsValidator');
+const IncidentsValidator = require('./validators/IncidentsValidator');
 
 routes.get('/ongs', OngsController.index);
 routes.post('/ongs', OngsValidator.create, OngsController.create);
 
-routes.get('/incidents', IncidentsController.index);
-routes.get('/incidents/:id', IncidentsController.select);
-routes.post('/incidents', IncidentsController.create);
-routes.delete('/incidents/:id', IncidentsController.remove);
+routes.get('/incidents', IncidentsValidator.index ,IncidentsController.index);
+routes.get('/incidents/:id', IncidentsValidator.select , IncidentsController.select);
+routes.post('/incidents', IncidentsValidator.create,IncidentsController.create);
+routes.delete('/incidents/:id', IncidentsValidator.remove, IncidentsController.remove);
 
 routes.get('/profile', ProfileController.index);
 
