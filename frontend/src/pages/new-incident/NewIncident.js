@@ -88,7 +88,7 @@ export default class NewIncident extends React.Component {
                                 <div className="form-row">
                                     <div className="form-group col-lg-4 mb-0">
                                         <Link to={'/profile'}>
-                                            <button className={'btn btn-outline-secondary btn-block'}>Cancelar</button>
+                                            <button type='button' className={'btn btn-outline-secondary btn-block'}>Cancelar</button>
                                         </Link>
                                     </div>
                                     <div className="form-group col-lg-8 mb-0">
