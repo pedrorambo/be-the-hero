@@ -1,0 +1,59 @@
+.btn-hero{
+    background-color: #e02041;
+    color: white;
+    transition: filter 0.2s;
+}
+
+.btn-hero:hover{
+    filter: brightness(90%);
+    color: white;
+}
+
+.btn-outline-hero{
+    background-color: transparent;
+    color: #e02041;
+    border: 1px solid #e02041;
+    transition: background-color 0.2s;
+}
+
+.btn-outline-hero:hover{
+    color: #e02041;
+    background-color: rgba(224, 32, 65, 0.15);
+}
+
+body{
+    background: #ecf0f1;
+}
+
+.vertical-center {
+    min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
+    min-height: 100vh; /* These two lines are counted as one :-)       */
+
+    display: flex;
+    align-items: center;
+}
+
+.link{
+    color: #e02041;
+}
+
+.link span{
+    color: #212529;
+    font-weight: bold;
+    margin-left: 2px;
+}
+
+.link:hover{
+    color: #e02041;
+    text-decoration: underline #e02041;
+}
+
+.btn-trash{
+    transition: all 0.2s;
+    transition-property: border, color;
+}
+
+.btn-trash:hover{
+    color: #e02041;
+    border: 1px solid #e02041;
+}
